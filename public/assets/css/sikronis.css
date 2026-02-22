@@ -1,0 +1,226 @@
+:root {
+  /* Primary Colors */
+  --sk-primary:       #2563eb;   /* Biru utama */
+  --sk-primary-dark:  #1d4ed8;
+  --sk-primary-light: #dbeafe;
+
+  /* Secondary */
+  --sk-secondary:     #10b981;   /* Hijau kesehatan */
+  --sk-secondary-dark:#059669;
+
+  /* Danger / Alert */
+  --sk-danger:        #ef4444;
+  --sk-warning:       #f59e0b;
+  --sk-success:       #10b981;
+  --sk-info:          #06b6d4;
+
+  /* Neutral */
+  --sk-dark:          #1a2035;   /* Sidebar */
+  --sk-gray-100:      #f3f4f6;
+  --sk-gray-200:      #e5e7eb;
+  --sk-gray-500:      #6b7280;
+  --sk-gray-900:      #111827;
+
+  /* Penyakit Kronis Colors */
+  --sk-diabetes:      #f59e0b;
+  --sk-hipertensi:    #ef4444;
+  --sk-jantung:       #ec4899;
+  --sk-asma:          #06b6d4;
+  --sk-ginjal:        #8b5cf6;
+}
+
+/* pasien.css */
+body.pasien-layout {
+  background-color: #f0f4f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Mobile container */
+.sk-mobile-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #ffffff;
+  position: relative;
+}
+
+/* Bottom Navigation */
+.sk-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 64px;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1000;
+}
+
+.sk-bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: #9ca3af;
+  font-size: 10px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.sk-bottom-nav .nav-item i {
+  font-size: 20px;
+}
+
+.sk-bottom-nav .nav-item.active {
+  color: var(--sk-primary);
+}
+
+.sk-bottom-nav .nav-item.active i {
+  transform: translateY(-2px);
+}
+
+/* Card pasien */
+.sk-card {
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+/* Status badge booking */
+.badge-pending    { background: #fef3c7; color: #92400e; }
+.badge-confirmed  { background: #d1fae5; color: #065f46; }
+.badge-completed  { background: #dbeafe; color: #1e40af; }
+.badge-cancelled  { background: #fee2e2; color: #991b1b; }
+
+/* admin.css */
+
+/* Sidebar */
+.sk-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background: var(--sk-dark);
+  overflow-y: auto;
+  z-index: 1040;
+  transition: transform 0.3s ease;
+}
+
+.sk-sidebar-brand {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sk-sidebar-brand .brand-text {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.sk-sidebar-brand .brand-sub {
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+}
+
+.sk-sidebar-menu {
+  padding: 16px 0;
+}
+
+.sk-sidebar-label {
+  color: rgba(255,255,255,0.3);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 16px 24px 8px;
+}
+
+.sk-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.sk-sidebar-link:hover,
+.sk-sidebar-link.active {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  border-left-color: var(--sk-primary);
+}
+
+.sk-sidebar-link i {
+  width: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* Main Content */
+.sk-main-content {
+  margin-left: 260px;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* Header */
+.sk-header {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+/* Stats Card */
+.sk-stat-card {
+  border-radius: 12px;
+  border: none;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sk-stat-card .stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+/* Responsive: collapse sidebar on mobile */
+@media (max-width: 991px) {
+  .sk-sidebar {
+    transform: translateX(-100%);
+  }
+  .sk-sidebar.show {
+    transform: translateX(0);
+  }
+  .sk-main-content {
+    margin-left: 0;
+  }
+}

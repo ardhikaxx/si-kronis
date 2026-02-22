@@ -1,0 +1,78 @@
+/* Admin Dashboard Layout CSS */
+
+.sk-stat-card {
+  border-radius: 12px;
+  border: none;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sk-stat-card .stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.sk-stat-card .stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.sk-stat-card .stat-label {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.card-header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  padding: 16px 20px;
+}
+
+.btn-sm {
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.form-control, .form-select {
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--sk-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
