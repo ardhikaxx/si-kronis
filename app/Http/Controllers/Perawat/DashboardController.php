@@ -17,7 +17,7 @@ class DashboardController extends Controller
             'today_appointments' => Booking::whereDate('tanggal_konsultasi', today())
                 ->whereIn('status', ['confirmed', 'completed'])
                 ->count(),
-            'pending_lab_results' => LabResult::where('status', 'pending')->count(),
+            'pending_lab_results' => LabResult::where('is_reviewed', false)->count(),
             'completed_today' => Consultation::whereDate('tanggal', today())
                 ->where('status', 'completed')
                 ->count(),
@@ -39,9 +39,9 @@ class DashboardController extends Controller
             ->orderBy('jam_mulai')
             ->get();
         
-        $pendingLabResults = LabResult::where('status', 'pending')
+        $pendingLabResults = LabResult::where('is_reviewed', false)
             ->with(['patient', 'consultation'])
-            ->orderBy('tanggal_pemeriksaan', 'desc')
+            ->orderBy('tanggal_lab', 'desc')
             ->take(5)
             ->get();
         

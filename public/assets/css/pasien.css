@@ -13,6 +13,23 @@ body.pasien-layout {
   position: relative;
 }
 
+/* Mobile Header - Full Width */
+.sk-mobile-header {
+  width: 100%;
+  max-width: 100%;
+  left: 0;
+  right: 0;
+  transform: none;
+}
+
+@media (min-width: 481px) {
+  .sk-mobile-header {
+    max-width: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 .sk-top-header {
   position: fixed;
   top: 0;

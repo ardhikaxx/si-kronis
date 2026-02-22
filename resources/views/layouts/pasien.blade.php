@@ -18,8 +18,8 @@
 
     <div class="sk-mobile-container">
         <!-- Top Header -->
-        <nav class="navbar fixed-top navbar-dark bg-primary shadow-sm" style="max-width: 480px; left: 50%; transform: translateX(-50%);">
-            <div class="container-fluid">
+        <nav class="navbar fixed-top navbar-dark bg-primary shadow-sm sk-mobile-header">
+            <div class="container-fluid px-3">
                 <a class="navbar-brand fw-bold" href="#">
                     <i class="fa-solid fa-hospital-user me-2"></i> SI-KRONIS
                 </a>

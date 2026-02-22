@@ -27,9 +27,9 @@ class BookingController extends Controller
     public function create()
     {
         $doctors = User::role('dokter')->with('doctorProfile')->get();
-        $categories = ChronicCategory::where('is_active', true)->get();
+        $chronicCategories = ChronicCategory::where('is_active', true)->get();
         
-        return view('pasien.konsultasi.booking', compact('doctors', 'categories'));
+        return view('pasien.konsultasi.booking', compact('doctors', 'chronicCategories'));
     }
 
     public function store(Request $request)
