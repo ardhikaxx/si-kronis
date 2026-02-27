@@ -59,6 +59,14 @@
                     <i class="fas fa-pills"></i>
                     <span>Obat-obatan</span>
                 </a>
+                <a href="{{ route('admin.template-resep.index') }}" class="sk-sidebar-link {{ request()->routeIs('admin.template-resep*') ? 'active' : '' }}">
+                    <i class="fas fa-file-prescription"></i>
+                    <span>Template Resep</span>
+                </a>
+                <a href="{{ route('admin.riwayat-medis.index') }}" class="sk-sidebar-link {{ request()->routeIs('admin.riwayat-medis*') ? 'active' : '' }}">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <span>Riwayat Medis</span>
+                </a>
 
                 <div class="sk-sidebar-label">Laporan</div>
                 <a href="{{ route('admin.laporan.index') }}" class="sk-sidebar-link {{ request()->routeIs('admin.laporan*') ? 'active' : '' }}">
@@ -82,6 +90,10 @@
                 <a href="{{ route('dokter.konsultasi.index') }}" class="sk-sidebar-link {{ request()->routeIs('dokter.konsultasi*') ? 'active' : '' }}">
                     <i class="fas fa-clipboard-list"></i>
                     <span>Daftar Konsultasi</span>
+                </a>
+                <a href="{{ route('admin.template-resep.index') }}" class="sk-sidebar-link {{ request()->routeIs('admin.template-resep*') ? 'active' : '' }}">
+                    <i class="fas fa-file-prescription"></i>
+                    <span>Template Resep</span>
                 </a>
 
                 <div class="sk-sidebar-label">Resep</div>

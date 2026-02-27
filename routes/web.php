@@ -40,6 +40,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('dokter', Admin\DokterController::class);
     Route::resource('konsultasi', Admin\KonsultasiController::class);
     Route::resource('obat', Admin\ObatController::class);
+    Route::resource('template-resep', Admin\PrescriptionTemplateController::class);
+    Route::get('/riwayat-medis', [Admin\RiwayatMedisController::class, 'index'])->name('riwayat-medis.index');
+    Route::get('/riwayat-medis/{patient}', [Admin\RiwayatMedisController::class, 'show'])->name('riwayat-medis.show');
     Route::get('/laporan', [Admin\LaporanController::class, 'index'])->name('laporan.index');
     Route::get('/laporan/export', [Admin\LaporanController::class, 'export'])->name('laporan.export');
 });
