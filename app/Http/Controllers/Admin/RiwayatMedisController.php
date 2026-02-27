@@ -25,7 +25,7 @@ class RiwayatMedisController extends Controller
                   ->orWhere('phone', 'like', "%{$search}%");
             });
         })
-        ->withCount(['consultations', 'prescriptions'])
+        ->withCount(['consultationsAsPatient', 'prescriptionsAsPatient'])
         ->latest()
         ->paginate(10);
 
