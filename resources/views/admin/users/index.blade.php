@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Pengguna')
+@section('title', 'Data Pasien')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="page-title">Data Pengguna</h1>
+    <h1 class="page-title">Data Pasien</h1>
     <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
         <i class="fas fa-plus me-2"></i>Tambah User
     </a>

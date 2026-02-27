@@ -13,7 +13,9 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $query = User::with('roles');
+        $query = User::whereHas('roles', function($q) {
+            $q->where('name', 'pasien');
+        });
         
         if ($request->filled('role')) {
             $query->role($request->role);
@@ -28,7 +30,7 @@ class UserController extends Controller
             });
         }
         
-        $users = $query->paginate(15);
+        $users = $query->with('roles')->paginate(15);
         $roles = Role::all();
         
         return view('admin.users.index', compact('users', 'roles'));
