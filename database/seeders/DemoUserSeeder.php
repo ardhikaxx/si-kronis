@@ -15,7 +15,6 @@ class DemoUserSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin User
         $admin = User::create([
             'name' => 'Admin SI-KRONIS',
             'email' => 'admin@sikronis.com',
@@ -25,7 +24,6 @@ class DemoUserSeeder extends Seeder
         ]);
         $admin->assignRole('admin');
 
-        // Dokter Users (5 dokter)
         $doctors = [
             [
                 'name' => 'Dr. Ahmad Hidayat, Sp.PD',
@@ -87,7 +85,6 @@ class DemoUserSeeder extends Seeder
                 'is_available' => true,
             ]);
 
-            // Create doctor schedules (Senin - Jumat)
             $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
             foreach ($days as $day) {
                 DoctorSchedule::create([
@@ -101,7 +98,6 @@ class DemoUserSeeder extends Seeder
             }
         }
 
-        // Perawat Users (3 perawat)
         $nurses = [
             ['name' => 'Ns. Dewi Lestari, S.Kep', 'email' => 'dewi.lestari@sikronis.com', 'phone' => '081234567896'],
             ['name' => 'Ns. Andi Wijaya, S.Kep', 'email' => 'andi.wijaya@sikronis.com', 'phone' => '081234567897'],
@@ -126,42 +122,38 @@ class DemoUserSeeder extends Seeder
             ]);
         }
 
-        // Pasien Users (50 pasien dengan data lengkap)
-        $firstNames = [
-            'Agus', 'Budi', 'Citra', 'Dedi', 'Eka', 'Fajar', 'Gita', 'Hadi', 'Indra', 'Joko',
-            'Kartika', 'Lina', 'Made', 'Nanda', 'Omar', 'Putri', 'Qori', 'Rina', 'Sari', 'Tono',
-            'Umar', 'Vina', 'Wati', 'Xena', 'Yudi', 'Zahra', 'Andi', 'Bella', 'Candra', 'Dina',
-            'Eko', 'Fitri', 'Gilang', 'Hana', 'Irfan', 'Jihan', 'Kiki', 'Lani', 'Mira', 'Niko',
-            'Olivia', 'Pandu', 'Qonita', 'Rudi', 'Sinta', 'Tari', 'Ulfa', 'Vino', 'Winda', 'Yoga'
+        $maleNames = [
+            'Agus', 'Budi', 'Dedi', 'Eka', 'Fajar', 'Hadi', 'Indra', 'Joko', 'Made', 'Omar', 'Tono',
+            'Umar', 'Yudi', 'Andi', 'Candra', 'Eko', 'Gilang', 'Irfan', 'Niko', 'Pandu', 'Rudi', 'Vino', 'Yoga',
+            'Aldi', 'Bayu', 'Dimas', 'Fauzi', 'Galih', 'Haris', 'Ivan', 'Kevin', 'Luthfi', 'Mahdi',
+            'Naufal', 'Oki', 'Putra', 'Rafli', 'Syahrul', 'Toni', 'Utomo', 'Wahyu', 'Zaky', 'Ardi', 'Bima', 'Deni',
+            'Eri', 'Farhan', 'Gerry', 'Hakim', 'Imam', 'Jefri', 'Kurnia', 'Leo', 'Nico', 'Okto'
+        ];
+
+        $femaleNames = [
+            'Citra', 'Gita', 'Kartika', 'Lina', 'Nanda', 'Putri', 'Qori', 'Rina', 'Sari', 'Vina', 'Wati',
+            'Zahra', 'Bella', 'Dina', 'Hana', 'Jihan', 'Kiki', 'Lani', 'Mira', 'Qonita', 'Sinta', 'Tari',
+            'Ulfa', 'Winda', 'Olivia', 'Ayu', 'Dewi', 'Fitri', 'Gadis', 'Ika', 'Jumiati', 'Lilis', 'Maya',
+            'Nurul', 'Puspita', 'Rahma', 'Tika', 'Umi', 'Vera'
         ];
 
         $lastNames = [
             'Pratama', 'Wijaya', 'Santoso', 'Kusuma', 'Putra', 'Sari', 'Lestari', 'Hidayat', 'Rahman', 'Gunawan',
-            'Setiawan', 'Permana', 'Nugroho', 'Wibowo', 'Saputra', 'Handoko', 'Susanto', 'Kurniawan', 'Hakim', 'Firmansyah'
+            'Setiawan', 'Permana', 'Nugroho', 'Wibowo', 'Saputra', 'Handoko', 'Susanto', 'Kurniawan', 'Hakim', 'Firmansah'
         ];
 
-        $cities = [
-            'Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Semarang', 'Makassar', 'Palembang', 'Tangerang', 
-            'Depok', 'Bekasi', 'Bogor', 'Yogyakarta', 'Malang', 'Denpasar', 'Balikpapan'
-        ];
-
-        $provinces = [
-            'DKI Jakarta', 'Jawa Timur', 'Jawa Barat', 'Sumatera Utara', 'Jawa Tengah', 
-            'Sulawesi Selatan', 'Sumatera Selatan', 'Banten', 'DI Yogyakarta', 'Bali', 'Kalimantan Timur'
-        ];
-
+        $cities = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Semarang', 'Makassar', 'Palembang', 'Tangerang', 'Depok', 'Bekasi'];
+        $provinces = ['DKI Jakarta', 'Jawa Timur', 'Jawa Barat', 'Sumatera Utara', 'Jawa Tengah', 'Sulawesi Selatan', 'Banten', 'DI Yogyakarta'];
         $bloodTypes = ['A', 'B', 'AB', 'O'];
-        $genders = ['L', 'P'];
-        $chronicCategories = [1, 2, 3, 4, 5]; // Diabetes, Hipertensi, Jantung, Ginjal, Asma
+        $chronicCategories = [1, 2, 3, 4, 5];
 
         for ($i = 1; $i <= 50; $i++) {
-            $firstName = $firstNames[($i - 1) % count($firstNames)];
+            $isMale = (bool) random_int(0, 1);
+            $firstName = $isMale ? $maleNames[array_rand($maleNames)] : $femaleNames[array_rand($femaleNames)];
             $lastName = $lastNames[array_rand($lastNames)];
             $fullName = $firstName . ' ' . $lastName;
             $email = strtolower(str_replace(' ', '.', $fullName)) . $i . '@example.com';
-            $gender = $genders[array_rand($genders)];
-            $city = $cities[array_rand($cities)];
-            $province = $provinces[array_rand($provinces)];
+            $gender = $isMale ? 'L' : 'P';
 
             $patient = User::create([
                 'name' => $fullName,
@@ -172,7 +164,6 @@ class DemoUserSeeder extends Seeder
             ]);
             $patient->assignRole('pasien');
 
-            // Create user profile
             UserProfile::create([
                 'user_id' => $patient->id,
                 'nik' => '31' . rand(10000000000000, 99999999999999),
@@ -180,15 +171,14 @@ class DemoUserSeeder extends Seeder
                 'jenis_kelamin' => $gender,
                 'golongan_darah' => $bloodTypes[array_rand($bloodTypes)],
                 'alamat' => 'Jl. ' . $lastNames[array_rand($lastNames)] . ' No. ' . rand(1, 100),
-                'kota' => $city,
-                'provinsi' => $province,
+                'kota' => $cities[array_rand($cities)],
+                'provinsi' => $provinces[array_rand($provinces)],
                 'kode_pos' => rand(10000, 99999),
                 'bpjs_number' => rand(1000000000000, 9999999999999),
-                'emergency_contact' => $firstNames[array_rand($firstNames)] . ' ' . $lastNames[array_rand($lastNames)],
+                'emergency_contact' => ($isMale ? $maleNames[array_rand($maleNames)] : $femaleNames[array_rand($femaleNames)]) . ' ' . $lastNames[array_rand($lastNames)],
                 'emergency_phone' => '08' . rand(1000000000, 9999999999),
             ]);
 
-            // Assign 1-3 chronic conditions randomly
             $numConditions = rand(1, 3);
             $selectedCategories = array_rand(array_flip($chronicCategories), $numConditions);
             if (!is_array($selectedCategories)) {
