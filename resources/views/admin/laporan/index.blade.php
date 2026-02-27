@@ -8,7 +8,7 @@
 <!-- Filter Periode -->
 <div class="card mb-4">
     <div class="card-body">
-        <form action="{{ route('admin.laporan') }}" method="GET" class="row g-3">
+        <form action="{{ route('admin.laporan.index') }}" method="GET" class="row g-3">
             <div class="col-md-4">
                 <label class="form-label">Dari Tanggal</label>
                 <input type="date" name="from_date" class="form-control" value="{{ $fromDate }}">
