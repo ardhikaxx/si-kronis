@@ -4,7 +4,12 @@
 
 @section('content')
 <div class="p-3">
-    <h5 class="fw-bold mb-3">Riwayat Konsultasi</h5>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold mb-0">Riwayat Konsultasi</h5>
+        <a href="{{ route('pasien.riwayat.export-pdf') }}" class="btn btn-sm btn-danger">
+            <i class="fas fa-file-pdf me-1"></i>Export PDF
+        </a>
+    </div>
 
     @forelse($consultations as $consultation)
     <div class="card sk-card mb-3">

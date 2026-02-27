@@ -50,6 +50,10 @@
                 <i class="fa-solid fa-calendar-check"></i>
                 <span>Konsultasi</span>
             </a>
+            <a href="{{ route('pasien.chat.index') }}" class="nav-item {{ request()->routeIs('pasien.chat.*') ? 'active' : '' }}">
+                <i class="fa-solid fa-comments"></i>
+                <span>Chat</span>
+            </a>
             <a href="{{ route('pasien.riwayat.index') }}" class="nav-item {{ request()->routeIs('pasien.riwayat.*') ? 'active' : '' }}">
                 <i class="fa-solid fa-file-medical"></i>
                 <span>Riwayat</span>

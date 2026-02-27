@@ -101,6 +101,12 @@
                     <i class="fas fa-prescription"></i>
                     <span>Resep Digital</span>
                 </a>
+
+                <div class="sk-sidebar-label">Komunikasi</div>
+                <a href="{{ route('dokter.chat.index') }}" class="sk-sidebar-link {{ request()->routeIs('dokter.chat*') ? 'active' : '' }}">
+                    <i class="fas fa-comments"></i>
+                    <span>Chat Pasien</span>
+                </a>
             @endif
 
             @if($role === 'perawat')

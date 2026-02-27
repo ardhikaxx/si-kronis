@@ -26,11 +26,17 @@ Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->name('pasien.')->g
     Route::get('/konsultasi/{id}', [Pasien\BookingController::class, 'show'])->name('konsultasi.show');
     Route::get('/riwayat', [Pasien\RiwayatController::class, 'index'])->name('riwayat.index');
     Route::get('/riwayat/{id}', [Pasien\RiwayatController::class, 'show'])->name('riwayat.show');
+    Route::get('/riwayat/export/pdf', [Pasien\RiwayatController::class, 'exportPdf'])->name('riwayat.export-pdf');
     Route::get('/resep', [Pasien\ResepController::class, 'index'])->name('resep.index');
     Route::get('/resep/{id}', [Pasien\ResepController::class, 'show'])->name('resep.show');
+    Route::post('/resep/{id}/refill', [Pasien\ResepController::class, 'requestRefill'])->name('resep.refill');
+    Route::get('/resep/refill', [Pasien\ResepController::class, 'myRefills'])->name('resep.refills');
     Route::get('/profil', [Pasien\ProfilController::class, 'index'])->name('profil.index');
     Route::put('/profil', [Pasien\ProfilController::class, 'update'])->name('profil.update');
     Route::post('/lab/upload', [Pasien\LabController::class, 'upload'])->name('lab.upload');
+    Route::get('/chat', [Pasien\ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/{dokter}', [Pasien\ChatController::class, 'show'])->name('chat.show');
+    Route::post('/chat/{dokter}', [Pasien\ChatController::class, 'store'])->name('chat.store');
 });
 
 // Admin routes
@@ -58,6 +64,9 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->name('dokter.')->g
     Route::get('/konsultasi/{id}', [Dokter\KonsultasiController::class, 'show'])->name('konsultasi.show');
     Route::put('/konsultasi/{id}', [Dokter\KonsultasiController::class, 'update'])->name('konsultasi.update');
     Route::resource('resep', Dokter\ResepController::class);
+    Route::get('/chat', [Dokter\ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/{pasien}', [Dokter\ChatController::class, 'show'])->name('chat.show');
+    Route::post('/chat/{pasien}', [Dokter\ChatController::class, 'store'])->name('chat.store');
 });
 
 // Perawat routes

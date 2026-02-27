@@ -80,4 +80,9 @@ class Prescription extends Model
     {
         return $query->where('status', 'cancelled');
     }
+
+    public function refills()
+    {
+        return $this->hasMany(PrescriptionRefill::class);
+    }
 }
