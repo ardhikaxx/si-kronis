@@ -1,98 +1,131 @@
-# SI-KRONIS
-
-Sistem Informasi Klinik untuk Penanganan Pasien Penyakit Kronis
-
----
-
-## Apa Itu SI-KRONIS?
-
-SI-KRONIS adalah platform digital untuk mengelola klinik spesialis penyakit kronis (diabetes, jantung, hipertensi, dll). Sistem ini menghubungkan pasien, dokter, perawat, dan admin dalam satu ekosistem.
-
----
-
-## Fitur Utama
-
-### 👤 Untuk Pasien
-- **Booking Konsultasi** - Buat janji dengan dokter pilihan
-- **Chat dengan Dokter** - Komunikasi langsung via fitur chat
-- **Riwayat Medis** - Lihat semua riwayat konsultasi dan treatment
-- **Resep Digital** - Akses resep dari dokter
-- **Request Isi Ulang Resep** - Minta obat lanjutan tanpa harus datang
-- **Upload Hasil Lab** - Unggah hasil pemeriksaan laboratorium
-- **Export PDF Riwayat** - Unduh rekam medis lengkap
-
-### 👨‍⚕️ Untuk Dokter
-- **Dashboard Pribadi** - Statistik pasien dan jadwal hari ini
-- **Jadwal Praktik** - Atur ketersediaan konsultasi
-- **Konsultasi** - Catat anamnesis, diagnosa, dan treatment
-- **Resep Digital** - Buat dan kelola resep pasien
-- **Chat dengan Pasien** - Balas pesan dari pasien
-
-### 🩺 Untuk Perawat
-- **Dashboard** - Overview pasien hari ini
-- **Kelola Booking** - Konfirmasi/tolak jadwal konsultasi
-- **Upload Hasil Lab** - Input hasil pemeriksaan laboratorium
-
-### ⚙️ Untuk Admin
-- **Kelola Pengguna** - Data pasien, dokter, perawat
-- **Manajemen Obat** - Database obat klinik
-- **Template Resep** - Buat template resep standar
-- **Riwayat Medis** - Lihat rekam medis semua pasien
-- **Laporan** - Statistik klinik
+<!-- LOGO & HEADER -->
+<div align="center">
+  <img src="https://img.shields.io/badge/Laravel-12.x-red?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/Bootstrap-5.x-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <br><br>
+  <h1>🏥 SI-KRONIS</h1>
+  <p><i>Sistem Informasi Klinik untuk Penanganan Pasien Penyakit Kronis</i></p>
+</div>
 
 ---
 
-## Akun Demo
+## 📋 Deskripsi
 
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@sikronis.com | password |
-| Dokter | ahmad.hidayat@sikronis.com | password |
-| Perawat | andi.wijaya@sikronis.com | password |
-| Pasien | (bisa register sendiri) | - |
+**SI-KRONIS** adalah platform digital terintegrasi untuk mengelola klinik spesialis penyakit kronis seperti diabetes, jantung, hipertensi, dan lainnya. Sistem ini menghubungkan pasien, dokter, perawat, dan admin dalam satu ekosistem yang efisien.
 
----
-
-## Cara Menggunakan
-
-### Login
-1. Buka halaman login
-2. Pilih role (pasien/register jika belum punya akun)
-3. Login dengan email & password
-
-### Pasien Baru
-1. Klik "Register"
-2. Isi data diri (nama, email, password)
-3. Login dan mulai gunakan fitur
-
-### Booking Konsultasi
-1. Pilih menu "Konsultasi"
-2. Pilih dokter dan jadwal yang tersedia
-3. Isi keluhan singkat
-4. Tunggu konfirmasi dari perawat
-
-### Chat dengan Dokter
-1. Pilih menu "Chat"
-2. Pilih dokter yang ingin dikontak
-3. Ketik pesan dan kirim
+### 🔑 Fitur Unggulan
+| Fitur | Deskripsi |
+|--------|-----------|
+| 🗓️ Booking Online | Jadwalkan konsultasi dengan dokter pilihan |
+| 💬 Chat Langsung | Komunikasi real-time antara pasien dan dokter |
+| 📄 Resep Digital | Kelola resep secara paperless |
+| 🔄 Request Refill | Minta obat lanjutan tanpa datang ke klinik |
+| 📊 Rekam Medis | Riwayat lengkap treatment pasien |
+| 📥 Export PDF | Unduh rekam medis kapan saja |
 
 ---
 
-## Teknologi
+## 👥 Untuk Siapa?
 
-- **Backend:** Laravel 12 (PHP 8.2+)
-- **Database:** MySQL
-- **Frontend:** Bootstrap 5 + Blade Templates
-- **PDF:** DomPDF
-- **Excel:** Maatwebsite Excel
+### 👤 Pasien
+```
+┌─────────────────────────────────────────────────────────────┐
+│  • Booking Konsultasi        • Chat dengan Dokter          │
+│  • Riwayat Medis             • Resep Digital               │
+│  • Request Isi Ulang Resep   • Upload Hasil Lab           │
+│  • Export PDF Riwayat        • Profil Pribadi             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 👨‍⚕️ Dokter
+```
+┌─────────────────────────────────────────────────────────────┐
+│  • Dashboard Statistik        • Jadwal Praktik             │
+│  • Kelola Konsultasi         • Resep Digital              │
+│  • Chat dengan Pasien        • Template Resep            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 🩺 Perawat
+```
+┌─────────────────────────────────────────────────────────────┐
+│  • Dashboard Overview         • Kelola Booking            │
+│  • Konfirmasi/Tolak Jadwal    • Upload Hasil Lab          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### ⚙️ Admin
+```
+┌─────────────────────────────────────────────────────────────┐
+│  • Kelola Pengguna            • Manajemen Obat             │
+│  • Template Resep             • Riwayat Medis             │
+│  • Laporan Statistik         • Semua Konsultasi           │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## Instalasi (Developer)
+## 🔐 Akun Demo
+
+| Role | Email | Password | Aksi |
+|------|-------|----------|------|
+| 🛡️ Admin | `admin@sikronis.com` | `password` | [Login](#) |
+| 👨‍⚕️ Dokter | `ahmad.hidayat@sikronis.com` | `password` | [Login](#) |
+| 🩺 Perawat | `andi.wijaya@sikronis.com` | `password` | [Login](#) |
+| 👤 Pasien | Register sendiri | `password` | [Register](#) |
+
+> 💡 **Tips:** Semua password dapat diganti setelah login.
+
+---
+
+## 🚀 Cara Menggunakan
+
+### 1. Login
+```
+Buka halaman login → Pilih role → Masukkan email & password
+```
+
+### 2. Pasien Baru
+```
+Register → Isi data diri → Login → Mulai gunakan fitur
+```
+
+### 3. Booking Konsultasi
+```
+Menu Konsultasi → Pilih Dokter → Pilih Jadwal → Isi Keluhan → Tunggu Konfirmasi
+```
+
+### 4. Chat dengan Dokter
+```
+Menu Chat → Pilih Dokter → Ketik Pesan → Kirim
+```
+
+---
+
+## 🛠️ Teknologi
+
+<div align="center">
+
+| Teknologi | Badge |
+|-----------|-------|
+| **Laravel 12** | ![Laravel](https://img.shields.io/badge/Laravel-12.x-red) |
+| **PHP 8.2+** | ![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4) |
+| **MySQL** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1) |
+| **Bootstrap 5** | ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3) |
+| **DomPDF** | ![DomPDF](https://img.shields.io/badge/DomPDF-1.0-green) |
+| **Maatwebsite Excel** | ![Excel](https://img.shields.io/badge/Excel-3.1-green) |
+
+</div>
+
+---
+
+## 💻 Instalasi
 
 ```bash
 # Clone repository
-git clone <repo-url>
+git clone https://github.com/ardhikaxx/si-kronis.git
 cd si-kronis
 
 # Install dependencies
@@ -112,50 +145,50 @@ php artisan serve
 
 ---
 
-## Struktur Menu
+## 📂 Struktur Menu
 
 ```
-Pasien:
-├── Dashboard
-├── Konsultasi (Booking)
-├── Riwayat (Treatment + Export PDF)
-├── Resep (+ Request Refill)
-├── Chat dengan Dokter
-└── Profil
-
-Dokter:
-├── Dashboard
-├── Jadwal Praktik
-├── Konsultasi
-├── Resep
-└── Chat Pasien
-
-Perawat:
-├── Dashboard
-├── Booking
-└── Lab
-
-Admin:
-├── Dashboard
-├── Data Pasien
-├── Data Dokter
-├── Semua Konsultasi
-├── Obat
-├── Template Resep
-├── Riwayat Medis
-└── Laporan
+┌──────────────────────────────────────────────────────────────┐
+│  PASIEN                    │  DOKTER                         │
+├────────────────────────────┼────────────────────────────────┤
+│  📊 Dashboard              │  📊 Dashboard                  │
+│  🗓️ Konsultasi            │  📅 Jadwal Praktik             │
+│  📄 Riwayat               │  🩺 Konsultasi                 │
+│  💊 Resep                  │  💊 Resep Digital              │
+│  💬 Chat                   │  💬 Chat Pasien                 │
+│  👤 Profil                 │                                │
+├────────────────────────────┼────────────────────────────────┤
+│  PERAWAT                   │  ADMIN                         │
+├────────────────────────────┼────────────────────────────────┤
+│  📊 Dashboard              │  📊 Dashboard                  │
+│  ✅ Booking                │  👥 Data Pasien                 │
+│  🧪 Lab                   │  👨‍⚕️ Data Dokter               │
+│                            │  💊 Obat                       │
+│                            │  📝 Template Resep             │
+│                            │  📄 Riwayat Medis              │
+│                            │  📈 Laporan                    │
+└────────────────────────────┴────────────────────────────────┘
 ```
 
 ---
 
-## Catatan Penting
+## ⚠️ Catatan Penting
 
-- Semua password default adalah `password` (ubah setelah login)
-- Pasien harus menunggu konfirmasi booking dari perawat
-- Resep hanya bisa di-refill setelah dokter menyetujui
-- Chat berfungsi 2 arah antara pasien dan dokter
-- Export PDF riwayat medis semua data konsultasi, resep, dan hasil lab
+- 🔑 **Password Default:** `password` (ubah setelah login)
+- ⏳ **Konfirmasi Booking:** Pasien harus menunggu konfirmasi dari perawat
+- ✅ **Refill Resep:** Hanya bisa setelah dokter menyetujui
+- 💬 **Chat:** Berfungsi 2 arah (pasien ↔ dokter)
+- 📥 **Export PDF:** Meng包含 semua data konsultasi, resep, dan hasil lab
 
 ---
 
-&copy; 2026 SI-KRONIS - Sistem Informasi Klinik Kronis
+## 📄 Lisensi
+
+MIT License - Copyright © 2026 SI-KRONIS
+
+---
+
+<div align="center">
+  <p>Dibuat dengan ❤️ untuk kesehatan Indonesia</p>
+  <p><strong>SI-KRONIS</strong> - Sistem Informasi Rekam Medis Klinik Kronis</p>
+</div>
