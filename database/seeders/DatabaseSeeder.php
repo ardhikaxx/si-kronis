@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             BookingSeeder::class,
             ConsultationSeeder::class,
             PrescriptionSeeder::class,
+            PrescriptionTemplateSeeder::class,
         ]);
     }
 }
