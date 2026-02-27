@@ -86,11 +86,21 @@
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label">Password Baru</label>
-                    <input type="password" name="password" class="form-control" placeholder="Kosongkan jika tidak ingin mengubah">
+                    <div class="password-input-wrapper">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Kosongkan jika tidak ingin mengubah">
+                        <button type="button" class="password-toggle-btn" onclick="togglePassword('password')">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Konfirmasi Password</label>
-                    <input type="password" name="password_confirmation" class="form-control">
+                    <div class="password-input-wrapper">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                        <button type="button" class="password-toggle-btn" onclick="togglePassword('password_confirmation')">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

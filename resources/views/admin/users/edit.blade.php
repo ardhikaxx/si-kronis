@@ -42,7 +42,12 @@
 
                         <div class="mb-3">
                             <label class="form-label">Password <small class="text-muted">(Kosongkan jika tidak ingin mengubah)</small></label>
-                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
+                            <div class="password-input-wrapper">
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+                                <button type="button" class="password-toggle-btn" onclick="togglePassword('password')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -50,7 +55,12 @@
 
                         <div class="mb-3">
                             <label class="form-label">Konfirmasi Password</label>
-                            <input type="password" name="password_confirmation" class="form-control">
+                            <div class="password-input-wrapper">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                                <button type="button" class="password-toggle-btn" onclick="togglePassword('password_confirmation')">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="mb-3">

@@ -26,7 +26,12 @@
             
             <div class="mb-4">
                 <label for="password" class="form-label text-secondary fw-semibold">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required placeholder="••••••••">
+                <div class="password-input-wrapper">
+                    <input type="password" class="form-control" id="password" name="password" required placeholder="••••••••">
+                    <button type="button" class="password-toggle-btn" onclick="togglePassword('password')">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">
