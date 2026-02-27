@@ -84,8 +84,11 @@
             </table>
         </div>
 
-        <div class="mt-3">
-            {{ $doctors->links() }}
+        <div class="pagination-wrapper">
+            <div class="pagination-info">
+                Menampilkan {{ $doctors->firstItem() ?? 0 }} - {{ $doctors->lastItem() ?? 0 }} dari {{ $doctors->total() }} data
+            </div>
+            {{ $doctors->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>

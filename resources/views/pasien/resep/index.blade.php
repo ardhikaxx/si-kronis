@@ -39,8 +39,11 @@
     @endforelse
 
     @if($prescriptions->hasPages())
-    <div class="mt-3">
-        {{ $prescriptions->links() }}
+    <div class="pagination-wrapper">
+        <div class="pagination-info">
+            Menampilkan {{ $prescriptions->firstItem() ?? 0 }} - {{ $prescriptions->lastItem() ?? 0 }} dari {{ $prescriptions->total() }} data
+        </div>
+        {{ $prescriptions->links('pagination::bootstrap-5') }}
     </div>
     @endif
 </div>

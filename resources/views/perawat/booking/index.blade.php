@@ -105,8 +105,11 @@
             </table>
         </div>
 
-        <div class="mt-3">
-            {{ $bookings->links() }}
+        <div class="pagination-wrapper">
+            <div class="pagination-info">
+                Menampilkan {{ $bookings->firstItem() ?? 0 }} - {{ $bookings->lastItem() ?? 0 }} dari {{ $bookings->total() }} data
+            </div>
+            {{ $bookings->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>

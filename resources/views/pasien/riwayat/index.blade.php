@@ -47,8 +47,11 @@
     @endforelse
 
     @if($consultations->hasPages())
-    <div class="mt-3">
-        {{ $consultations->links() }}
+    <div class="pagination-wrapper">
+        <div class="pagination-info">
+            Menampilkan {{ $consultations->firstItem() ?? 0 }} - {{ $consultations->lastItem() ?? 0 }} dari {{ $consultations->total() }} data
+        </div>
+        {{ $consultations->links('pagination::bootstrap-5') }}
     </div>
     @endif
 </div>

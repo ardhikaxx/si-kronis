@@ -93,8 +93,11 @@
             </table>
         </div>
 
-        <div class="mt-3">
-            {{ $medicines->links() }}
+        <div class="pagination-wrapper">
+            <div class="pagination-info">
+                Menampilkan {{ $medicines->firstItem() ?? 0 }} - {{ $medicines->lastItem() ?? 0 }} dari {{ $medicines->total() }} data
+            </div>
+            {{ $medicines->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>

@@ -98,8 +98,11 @@
             </table>
         </div>
 
-        <div class="mt-3">
-            {{ $users->links() }}
+        <div class="pagination-wrapper">
+            <div class="pagination-info">
+                Menampilkan {{ $users->firstItem() ?? 0 }} - {{ $users->lastItem() ?? 0 }} dari {{ $users->total() }} data
+            </div>
+            {{ $users->links('pagination::bootstrap-5') }}
         </div>
     </div>
 </div>
