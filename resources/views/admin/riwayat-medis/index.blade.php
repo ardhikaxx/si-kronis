@@ -52,10 +52,10 @@
                         <td>{{ $patient->email }}</td>
                         <td>{{ $patient->phone ?? '-' }}</td>
                         <td>
-                            <span class="badge bg-info">{{ $patient->consultations_count }}x</span>
+                            <span class="badge bg-info">{{ $patient->consultations_as_patient_count }}x</span>
                         </td>
                         <td>
-                            <span class="badge bg-primary">{{ $patient->prescriptions_count }}x</span>
+                            <span class="badge bg-primary">{{ $patient->prescriptions_as_patient_count }}x</span>
                         </td>
                         <td>
                             <a href="{{ route('admin.riwayat-medis.show', $patient->id) }}" class="btn btn-sm btn-primary">
