@@ -13,6 +13,8 @@
     
     <!-- Custom CSS -->
     <link href="{{ asset('assets/css/sikronis.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/pasien.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/improve.css') }}" rel="stylesheet">
 </head>
 <body class="pasien-layout">
 
