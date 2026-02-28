@@ -1,266 +1,79 @@
 @extends('layouts.admin')
-@section('title', 'Perawat Dashboard')
+@section('title', 'Dashboard Perawat')
 
 @section('content')
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <h4 class="mb-3">Dashboard Perawat</h4>
-        </div>
+<div class="page-header animate-fade-in">
+    <div>
+        <h1 class="page-title">Dashboard Perawat</h1>
+        <p class="page-subtitle">Selamat datang, {{ auth()->user()->name }}!</p>
     </div>
+    <span class="badge bg-primary py-2 px-3"><i class="fas fa-calendar me-2"></i>{{ now()->format('d F Y') }}</span>
+</div>
 
-    <div class="row g-3 mb-4">
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-clock text-warning" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h3 class="mb-0">{{ $stats['pending_bookings'] }}</h3>
-                            <small class="text-muted">Booking Pending</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-calendar-day text-primary" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h3 class="mb-0">{{ $stats['today_appointments'] }}</h3>
-                            <small class="text-muted">Jadwal Hari Ini</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-flask text-info" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h3 class="mb-0">{{ $stats['pending_lab_results'] }}</h3>
-                            <small class="text-muted">Lab Pending</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="flex-shrink-0">
-                            <i class="fas fa-check-circle text-success" style="font-size: 2rem;"></i>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h3 class="mb-0">{{ $stats['completed_today'] }}</h3>
-                            <small class="text-muted">Selesai Hari Ini</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="stat-card warning animate-fade-in animate-delay-1">
+            <div class="stat-icon avatar-warning"><i class="fas fa-clock"></i></div>
+            <div class="stat-value">{{ $stats['pending_bookings'] }}</div>
+            <div class="stat-label">Booking Pending</div>
         </div>
     </div>
+    <div class="col-md-3">
+        <div class="stat-card success animate-fade-in animate-delay-2">
+            <div class="stat-icon avatar-success"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-value">{{ $stats['today_confirmed'] }}</div>
+            <div class="stat-label">Confirmed Hari Ini</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card primary animate-fade-in animate-delay-3">
+            <div class="stat-icon avatar-primary"><i class="fas fa-users"></i></div>
+            <div class="stat-value">{{ $stats['total_patients'] }}</div>
+            <div class="stat-label">Total Pasien</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card info animate-fade-in animate-delay-4">
+            <div class="stat-icon avatar-info"><i class="fas fa-flask"></i></div>
+            <div class="stat-value">{{ $stats['pending_lab'] }}</div>
+            <div class="stat-label">Lab Pending</div>
+        </div>
+    </div>
+</div>
 
-    <!-- Charts Row -->
-    <div class="row g-3 mb-4">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white">
-                    <h6 class="mb-0">Booking 7 Hari Terakhir</h6>
-                </div>
-                <div class="card-body">
-                    <div style="height: 300px; position: relative;">
-                        <canvas id="bookingWeekChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white">
-                    <h6 class="mb-0">Status Booking Minggu Ini</h6>
-                </div>
-                <div class="card-body">
-                    <div style="height: 300px; position: relative;">
-                        <canvas id="weeklyStatusChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="section-card animate-fade-in">
+    <div class="section-title"><i class="fas fa-calendar-check text-primary"></i>Jadwal Hari Ini</div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead><tr><th>Jam</th><th>Pasien</th><th>Dokter</th><th>Kategori</th><th>Status</th><th>Aksi</th></tr></thead>
+            <tbody>
+                @forelse($todayBookings as $booking)
+                <tr>
+                    <td><span class="fw-bold">{{ substr($booking->jam_mulai, 0, 5) }}</span></td>
+                    <td><div class="d-flex align-items-center"><div class="avatar avatar-sm avatar-primary me-2">{{ substr($booking->patient->name, 0, 1) }}</div>{{ $booking->patient->name }}</div></td>
+                    <td>{{ $booking->doctor->name }}</td>
+                    <td>{{ $booking->chronicCategory->nama ?? '-' }}</td>
+                    <td>
+                        @if($booking->status == 'pending')
+                            <span class="badge badge-pending">Pending</span>
+                        @elseif($booking->status == 'confirmed')
+                            <span class="badge badge-confirmed">Confirmed</span>
+                        @else
+                            <span class="badge badge-completed">{{ $booking->status }}</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if($booking->status == 'pending')
+                        <form action="{{ route('perawat.booking.confirm', $booking->id) }}" method="POST" class="d-inline">@csrf<button type="submit" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button></form>
+                        <form action="{{ route('perawat.booking.cancel', $booking->id) }}" method="POST" class="d-inline">@csrf<button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Batalkan?')"><i class="fas fa-times"></i></button></form>
+                        @endif
+                    </td>
+                </tr>
+                @empty
+                <tr><td colspan="6"><div class="empty-state"><i class="fas fa-calendar-xmark"></i><h5>Tidak Ada Jadwal</h5></div></td></tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-
-    <div class="row g-3">
-        <div class="col-md-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white d-flex justify-content-between align-items-center">
-                    <h6 class="mb-0">Booking Pending</h6>
-                    <a href="{{ route('perawat.booking.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a>
-                </div>
-                <div class="card-body">
-                    @forelse($pendingBookings as $booking)
-                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                        <div class="flex-shrink-0">
-                            <div class="bg-warning text-white rounded p-2 text-center" style="min-width: 60px;">
-                                <div style="font-size: 0.75rem;">{{ \Carbon\Carbon::parse($booking->tanggal_konsultasi)->format('d/m') }}</div>
-                            </div>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="mb-1">{{ $booking->patient->name }}</h6>
-                            <small class="text-muted">Dokter: {{ $booking->doctor->name }}</small>
-                        </div>
-                    </div>
-                    @empty
-                    <p class="text-muted text-center mb-0">Tidak ada booking pending</p>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white">
-                    <h6 class="mb-0">Jadwal Hari Ini</h6>
-                </div>
-                <div class="card-body">
-                    @forelse($todayAppointments as $appointment)
-                    <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-                        <div class="flex-shrink-0">
-                            <div class="bg-primary text-white rounded p-2 text-center" style="min-width: 60px;">
-                                <div style="font-size: 0.75rem;">{{ \Carbon\Carbon::parse($appointment->jam_mulai)->format('H:i') }}</div>
-                            </div>
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <h6 class="mb-1">{{ $appointment->patient->name }}</h6>
-                            <small class="text-muted">Dokter: {{ $appointment->doctor->name }}</small>
-                        </div>
-                        <div class="flex-shrink-0">
-                            @if($appointment->status == 'confirmed')
-                                <span class="badge bg-success">Confirmed</span>
-                            @else
-                                <span class="badge bg-primary">Completed</span>
-                            @endif
-                        </div>
-                    </div>
-                    @empty
-                    <p class="text-muted text-center mb-0">Tidak ada jadwal hari ini</p>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 @endsection
-
-@push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<script>
-(function() {
-    'use strict';
-    
-    // Store chart instances
-    let charts = {};
-    
-    // Destroy all existing charts
-    Object.keys(charts).forEach(key => {
-        if (charts[key]) {
-            charts[key].destroy();
-        }
-    });
-    charts = {};
-    
-    // Wait for DOM to be ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCharts);
-    } else {
-        initCharts();
-    }
-    
-    function initCharts() {
-        // Booking Week Chart
-        const weekCanvas = document.getElementById('bookingWeekChart');
-        if (weekCanvas) {
-            const existingChart = Chart.getChart(weekCanvas);
-            if (existingChart) existingChart.destroy();
-            
-            charts.bookingWeek = new Chart(weekCanvas, {
-                type: 'line',
-                data: {
-                    labels: @json($days),
-                    datasets: [{
-                        label: 'Booking',
-                        data: @json($bookingsByDay),
-                        borderColor: 'rgb(75, 192, 192)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 1
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Weekly Status Chart
-        const statusCanvas = document.getElementById('weeklyStatusChart');
-        if (statusCanvas) {
-            const existingChart = Chart.getChart(statusCanvas);
-            if (existingChart) existingChart.destroy();
-            
-            const statusData = @json($weeklyBookingByStatus);
-            charts.weeklyStatus = new Chart(statusCanvas, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Pending', 'Confirmed', 'Completed', 'Cancelled'],
-                    datasets: [{
-                        data: [
-                            statusData.pending || 0,
-                            statusData.confirmed || 0,
-                            statusData.completed || 0,
-                            statusData.cancelled || 0
-                        ],
-                        backgroundColor: [
-                            'rgb(255, 205, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 99, 132)'
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                        }
-                    }
-                }
-            });
-        }
-    }
-})();
-</script>
-@endpush
