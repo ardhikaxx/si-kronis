@@ -22,10 +22,12 @@ class LaporanController extends Controller
         
         $stats = [
             'total_bookings' => Booking::whereBetween('tanggal_konsultasi', [$fromDate, $toDate])->count(),
-            'completed_consultations' => Consultation::whereBetween('tanggal', [$fromDate, $toDate])
+            'completed_bookings' => Consultation::whereBetween('tanggal', [$fromDate, $toDate])
                 ->where('status', 'completed')->count(),
+            'pending_bookings' => Booking::whereBetween('tanggal_konsultasi', [$fromDate, $toDate])
+                ->where('status', 'pending')->count(),
             'total_prescriptions' => Prescription::whereBetween('tanggal_resep', [$fromDate, $toDate])->count(),
-            'new_patients' => User::role('pasien')
+            'total_patients' => User::role('pasien')
                 ->whereBetween('created_at', [$fromDate, $toDate])->count(),
         ];
         
