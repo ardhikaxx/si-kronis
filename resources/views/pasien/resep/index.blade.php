@@ -4,47 +4,54 @@
 
 @section('content')
 <div class="p-3">
-    <h5 class="fw-bold mb-3">Resep Digital</h5>
+    <div class="d-flex justify-content-between align-items-center mb-4 animate-fade-in">
+        <h5 class="fw-bold mb-0">Resep Digital</h5>
+        <a href="{{ route('pasien.resep.refills') }}" class="btn btn-sm btn-outline-primary">Request Refill</a>
+    </div>
 
     @forelse($prescriptions as $prescription)
-    <div class="card sk-card mb-3">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-                <div>
-                    <small class="text-muted">{{ $prescription->kode_resep }}</small>
-                    <h6 class="fw-bold mb-1">{{ $prescription->doctor->name }}</h6>
-                    <small class="text-muted">{{ \Carbon\Carbon::parse($prescription->tanggal_resep)->format('d M Y') }}</small>
-                </div>
-                <span class="badge badge-{{ $prescription->status }}">{{ ucfirst($prescription->status) }}</span>
+    <div class="mobile-card animate-fade-in">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+                <small class="text-muted">{{ $prescription->kode_resep }}</small>
+                <h6 class="fw-bold mb-1">{{ $prescription->doctor->name }}</h6>
+                <small class="text-muted">{{ \Carbon\Carbon::parse($prescription->tanggal_resep)->format('d M Y') }}</small>
             </div>
-
-            <div class="mb-2">
-                <small class="text-muted">{{ $prescription->items->count() }} item obat</small>
-            </div>
-
-            <div class="mt-3">
-                <a href="{{ route('pasien.resep.show', $prescription->id) }}" class="btn btn-sm btn-outline-primary w-100">
-                    <i class="fas fa-eye me-1"></i>Lihat Resep
-                </a>
-            </div>
+            @if($prescription->status == 'active')
+                <span class="badge badge-confirmed">Aktif</span>
+            @elseif($prescription->status == 'expired')
+                <span class="badge badge-cancelled">Expired</span>
+            @else
+                <span class="badge badge-pending">{{ $prescription->status }}</span>
+            @endif
+        </div>
+        <div class="mb-3">
+            <small class="text-muted">{{ $prescription->prescriptionItems->count() }} item obat</small>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="{{ route('pasien.resep.show', $prescription->id) }}" class="btn btn-outline-primary btn-sm flex-grow-1">
+                <i class="fas fa-eye me-1"></i>Lihat
+            </a>
+            @if($prescription->status == 'active')
+            <form action="{{ route('pasien.resep.refill', $prescription->id) }}" method="POST" class="flex-grow-1">
+                @csrf
+                <button type="submit" class="btn btn-success btn-sm w-100">
+                    <i class="fas fa-refresh me-1"></i>Refill
+                </button>
+            </form>
+            @endif
         </div>
     </div>
     @empty
-    <div class="card sk-card">
-        <div class="card-body text-center py-5">
-            <i class="fas fa-pills text-muted" style="font-size: 48px;"></i>
-            <p class="text-muted mt-3">Belum ada resep</p>
-        </div>
+    <div class="mobile-card text-center py-5">
+        <i class="fas fa-prescription text-muted" style="font-size: 64px;"></i>
+        <h6 class="mt-3">Belum Ada Resep</h6>
+        <p class="text-muted">Anda belum pernah mendapatkan resep</p>
     </div>
     @endforelse
 
     @if($prescriptions->hasPages())
-    <div class="pagination-wrapper">
-        <div class="pagination-info">
-            Menampilkan {{ $prescriptions->firstItem() ?? 0 }} - {{ $prescriptions->lastItem() ?? 0 }} dari {{ $prescriptions->total() }} data
-        </div>
-        {{ $prescriptions->links('pagination::bootstrap-5') }}
-    </div>
+    <div class="pagination-wrapper mt-4">{{ $prescriptions->links('pagination.bootstrap-5') }}</div>
     @endif
 </div>
 @endsection
