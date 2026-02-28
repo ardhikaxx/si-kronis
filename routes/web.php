@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\Dokter;
 use App\Http\Controllers\Perawat;
 
+use App\Http\Controllers\SearchController;
+
 // Auth routes (login, register, logout)
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -42,6 +44,7 @@ Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->name('pasien.')->g
 // Admin routes
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/search', [SearchController::class, 'index'])->name('search');
     Route::resource('users', Admin\UserController::class);
     Route::resource('dokter', Admin\DokterController::class);
     Route::resource('konsultasi', Admin\KonsultasiController::class);
@@ -56,6 +59,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
 // Dokter routes
 Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->name('dokter.')->group(function () {
     Route::get('/dashboard', [Dokter\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/search', [SearchController::class, 'index'])->name('search');
     Route::get('/jadwal', [Dokter\JadwalController::class, 'index'])->name('jadwal.index');
     Route::post('/jadwal', [Dokter\JadwalController::class, 'store'])->name('jadwal.store');
     Route::put('/jadwal/{id}', [Dokter\JadwalController::class, 'update'])->name('jadwal.update');
@@ -72,6 +76,7 @@ Route::middleware(['auth', 'role:dokter'])->prefix('dokter')->name('dokter.')->g
 // Perawat routes
 Route::middleware(['auth', 'role:perawat'])->prefix('perawat')->name('perawat.')->group(function () {
     Route::get('/dashboard', [Perawat\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/search', [SearchController::class, 'index'])->name('search');
     Route::get('/booking', [Perawat\BookingController::class, 'index'])->name('booking.index');
     Route::put('/booking/{id}/confirm', [Perawat\BookingController::class, 'confirm'])->name('booking.confirm');
     Route::put('/booking/{id}/cancel', [Perawat\BookingController::class, 'cancel'])->name('booking.cancel');
